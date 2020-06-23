@@ -29,11 +29,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="184.5" height="30"/>
                                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="寝る"/>
+                                        <connections>
+                                            <action selector="nightLottieStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S0V-n6-GRA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3a-Xg-bEn">
                                         <rect key="frame" x="229.5" y="0.0" width="184.5" height="30"/>
                                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="起きる"/>
+                                        <connections>
+                                            <action selector="nightLottieStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ufK-tg-oAJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

@@ -3,19 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05B75022342A15FB0FC697A3 /* Pods_sleepCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D659938B3ADC1AD77614B8CF /* Pods_sleepCheck.framework */; };
 		D844291424A23C00004B69FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844291324A23C00004B69FF /* AppDelegate.swift */; };
 		D844291624A23C00004B69FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844291524A23C00004B69FF /* SceneDelegate.swift */; };
 		D844291824A23C00004B69FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844291724A23C00004B69FF /* ViewController.swift */; };
 		D844291B24A23C00004B69FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D844291924A23C00004B69FF /* Main.storyboard */; };
 		D844291D24A23C01004B69FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D844291C24A23C01004B69FF /* Assets.xcassets */; };
 		D844292024A23C01004B69FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D844291E24A23C01004B69FF /* LaunchScreen.storyboard */; };
+		D865604824A27FDF00FC5B8E /* night.json in Resources */ = {isa = PBXBuildFile; fileRef = D865604724A27FDF00FC5B8E /* night.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D20066683F197B907BC930F7 /* Pods-sleepCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sleepCheck.debug.xcconfig"; path = "Target Support Files/Pods-sleepCheck/Pods-sleepCheck.debug.xcconfig"; sourceTree = "<group>"; };
+		D659938B3ADC1AD77614B8CF /* Pods_sleepCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sleepCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D844291024A23C00004B69FF /* sleepCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sleepCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D844291324A23C00004B69FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D844291524A23C00004B69FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		D844291C24A23C01004B69FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D844291F24A23C01004B69FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D844292124A23C01004B69FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D865604724A27FDF00FC5B8E /* night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = night.json; sourceTree = "<group>"; };
+		FB723855FC8A35B818C74E92 /* Pods-sleepCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sleepCheck.release.xcconfig"; path = "Target Support Files/Pods-sleepCheck/Pods-sleepCheck.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B75022342A15FB0FC697A3 /* Pods_sleepCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1E3D66E2EFE075B1E3F3DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D20066683F197B907BC930F7 /* Pods-sleepCheck.debug.xcconfig */,
+				FB723855FC8A35B818C74E92 /* Pods-sleepCheck.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A35AC4EF26DAA42C6B9659BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D659938B3ADC1AD77614B8CF /* Pods_sleepCheck.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D844290724A23C00004B69FF = {
 			isa = PBXGroup;
 			children = (
 				D844291224A23C00004B69FF /* sleepCheck */,
 				D844291124A23C00004B69FF /* Products */,
+				5B1E3D66E2EFE075B1E3F3DF /* Pods */,
+				A35AC4EF26DAA42C6B9659BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,40 @@
 		D844291224A23C00004B69FF /* sleepCheck */ = {
 			isa = PBXGroup;
 			children = (
+				D865604B24A2885300FC5B8E /* Controller */,
+				D865604A24A2884A00FC5B8E /* View */,
+				D865604924A2884000FC5B8E /* Model */,
 				D844291324A23C00004B69FF /* AppDelegate.swift */,
 				D844291524A23C00004B69FF /* SceneDelegate.swift */,
-				D844291724A23C00004B69FF /* ViewController.swift */,
-				D844291924A23C00004B69FF /* Main.storyboard */,
 				D844291C24A23C01004B69FF /* Assets.xcassets */,
 				D844291E24A23C01004B69FF /* LaunchScreen.storyboard */,
+				D865604724A27FDF00FC5B8E /* night.json */,
 				D844292124A23C01004B69FF /* Info.plist */,
 			);
 			path = sleepCheck;
+			sourceTree = "<group>";
+		};
+		D865604924A2884000FC5B8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D865604A24A2884A00FC5B8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D844291924A23C00004B69FF /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D865604B24A2885300FC5B8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D844291724A23C00004B69FF /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D844292424A23C01004B69FF /* Build configuration list for PBXNativeTarget "sleepCheck" */;
 			buildPhases = (
+				21D097964DE101C673A34095 /* [CP] Check Pods Manifest.lock */,
 				D844290C24A23C00004B69FF /* Sources */,
 				D844290D24A23C00004B69FF /* Frameworks */,
 				D844290E24A23C00004B69FF /* Resources */,
+				917D97581C1D7CFE34797726 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D865604824A27FDF00FC5B8E /* night.json in Resources */,
 				D844292024A23C01004B69FF /* LaunchScreen.storyboard in Resources */,
 				D844291D24A23C01004B69FF /* Assets.xcassets in Resources */,
 				D844291B24A23C00004B69FF /* Main.storyboard in Resources */,
@@ -132,6 +186,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21D097964DE101C673A34095 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-sleepCheck-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		917D97581C1D7CFE34797726 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sleepCheck/Pods-sleepCheck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sleepCheck/Pods-sleepCheck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sleepCheck/Pods-sleepCheck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D844290C24A23C00004B69FF /* Sources */ = {
@@ -282,6 +378,7 @@
 		};
 		D844292524A23C01004B69FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D20066683F197B907BC930F7 /* Pods-sleepCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +397,7 @@
 		};
 		D844292624A23C01004B69FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB723855FC8A35B818C74E92 /* Pods-sleepCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
