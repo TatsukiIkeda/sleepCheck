@@ -23,38 +23,31 @@ class ViewController: UIViewController {
     ///現在時間取得（ロンドン時間）
     let day = Date()
     /// インスタンス生成
-    let dateFormatter = DateFormatter()
-    var DateData: String = ""
+    var dateFormatter = DateFormatter()
+    var DateData = ""
     var res = ""
-    var sleep = 0
-    var gettingUp = 0
+    var sleepDay = 0
+    var sleepHour = 0
+    var sleepMintes = 0
+ 
+    var anserHour = 0
+    var anserMintes = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
+   
         // Do any additional setup after loading the view.
     }
-    
     ///現在時間変換関数
     func dateGet(){
+        let day = Date()
         ///ロンドン時間を日本時間に変換
               dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMdHm", options: 0, locale: Locale(identifier: "ja_JP"))
         ///時間だけをdataに指定
         DateData = String(dateFormatter.string(from: day).suffix(5))
                 print(DateData)
-         
     }
-    
-    
-   
-    
-
-    
-    
-    
     ///Lottieアニメーション設定
     func Lottienimation() {
            animationView.frame = CGRect(x: 0, y: 10, width: view.frame.size.width, height: (view.frame.size.height) / 3)
@@ -64,8 +57,8 @@ class ViewController: UIViewController {
                   animationView.backgroundColor = .clear
                   view.addSubview(animationView)
        }
-    
-    
+  
+
     ///寝るボタンアニメーション
     @IBAction func nightLottieStart(_ sender: Any) {
         dateGet()
@@ -73,7 +66,7 @@ class ViewController: UIViewController {
         animationView.play()
         sleepingTime.text = DateData
 
-        getSleepTime()   ///就寝時間を分に変換してデフォルトデータベースに保存キー値は"sleeoMinuteTime"
+        getSleepTimeDefaults()   ///就寝時間を分に変換してデフォルトデータベースに保存キー値は"sleeoMinuteTime"
         
         //userDefaultsに就寝時刻を格納
       let ud = UserDefaults.standard
@@ -81,20 +74,20 @@ class ViewController: UIViewController {
       ud.synchronize()
     }
     ///就寝時間を分に変換して保存
-    func getSleepTime(){
+    func getSleepTimeDefaults(){
            let date = Date()
            let calendar = Calendar.current
-           
-           var hour = calendar.component(.hour, from: date)
-           hour = hour * 60
-           let mintes = calendar.component(.minute, from: date)
-           let totalDayTime = hour + mintes
-           
-           
+           ///日時　時間　分に分ける
+           let sleepDayDefaults = calendar.component(.day, from: date)
+           let sleepHourDefaults = calendar.component(.hour, from: date)
+           let sleepMintesDefaults = calendar.component(.minute, from: date)
+          ///デリゲートに保存
            let userDefaults = UserDefaults.standard
-           userDefaults.set(totalDayTime, forKey: "sleeoMinuteTime")
+        userDefaults.set(sleepDayDefaults, forKey: "SleepDay")
+           userDefaults.set(sleepHourDefaults, forKey: "SleepHour")
+            userDefaults.set(sleepMintesDefaults, forKey: "SleepMintes")
            userDefaults.synchronize()
-           print(totalDayTime)
+          
        }
        
     
@@ -102,40 +95,79 @@ class ViewController: UIViewController {
     
     ///起きるボタンアニメーション
     @IBAction func nightLottieStop(_ sender: Any) {
-        let ud = UserDefaults.standard
-        res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
-        print(res)
-        sleepingTime.text = res
         
         dateGet()
+        gettingUpTime.text = DateData
+        let ud = UserDefaults.standard
+        res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
+//        print(res)
+        sleepingTime.text = res
+        
+        
         Lottienimation()
         animationView.play()
         animationView.stop()
-        gettingUpTime.text = DateData
        
-        gettingUpTimes() //起床時間を分に変換する
-        sleep = UserDefaults.standard.integer(forKey: "sleeoMinuteTime") //の時はエラーになる
-        print(sleep)
-       print(gettingUp)
-        totalTime.text = "\(sleep + gettingUp)"
+       
+//        gettingUpTimes() //起床時間を分に変換する
+       
+        totaleTimes()
+       
+
+       
+
        
         
     }
 
-    func gettingUpTimes() {
+
+    ///睡眠時間算出
+    func totaleTimes(){
         let date = Date()
         let calendar = Calendar.current
+        ///起床時間　日時　時間　分に分ける
+        let gettingUpDay = calendar.component(.day, from: date)
+        let gettingUpHour = calendar.component(.hour, from: date)
+        let gettingUpMintes = calendar.component(.minute, from: date)
+        ///就寝時間を　日時　時間　分で取得
         
-        var hour = calendar.component(.hour, from: date)
-        hour = hour * 60
-        let mintes = calendar.component(.minute, from: date)
-         gettingUp = hour + mintes
+        sleepDay = UserDefaults.standard.integer(forKey: "SleepDay")
+        sleepHour = UserDefaults.standard.integer(forKey: "SleepHour")
+        sleepMintes = UserDefaults.standard.integer(forKey: "SleepMintes")
+        print(gettingUpDay)
+        print(gettingUpHour)
+        print(gettingUpMintes)
+        print(sleepDay)
+        print(sleepHour)
+        print(sleepMintes)
         
         
         
-    }
-    
-    func totaleTime(){
+        
+        
+        if gettingUpDay == sleepDay{
+            if gettingUpHour == sleepHour{   ///ok
+                 anserMintes =  gettingUpMintes - sleepMintes
+                totalTime.text =  String("0 時間 \(anserMintes) 分")
+                //////ok
+            }else if sleepMintes > gettingUpMintes{
+                
+                anserHour =   gettingUpHour  - sleepHour - 1
+                anserMintes = gettingUpMintes + (60 - sleepMintes)
+                totalTime.text = String("\(anserHour) 時間 \(anserMintes) 分")
+            }else{
+                anserHour =   gettingUpHour - sleepHour
+                anserMintes = gettingUpMintes - sleepMintes
+                totalTime.text = String("\(anserHour) 時間 \(anserMintes) 分")
+            }
+        }else {
+            
+        }
+       
+        
+        
+        
+        
         
         
     }
