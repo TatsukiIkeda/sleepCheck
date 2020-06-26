@@ -30,8 +30,8 @@ class ViewController: UIViewController {
     var sleepHour = 0
     var sleepMintes = 0
  
-    var anserHour = 0
-    var anserMintes = 0
+    var totalHour = 0
+    var totalMintes = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,37 +144,37 @@ class ViewController: UIViewController {
         
         
         
-        
+        //同日中に就寝→起床　例：深夜に就寝、等
         if gettingUpDay == sleepDay{
-            if gettingUpHour == sleepHour{   ///ok
-                 anserMintes =  gettingUpMintes - sleepMintes
-                totalTime.text =  String("0 時間 \(anserMintes) 分")
-                //////ok
+            if gettingUpHour == sleepHour{
+                 totalMintes =  gettingUpMintes - sleepMintes
+                totalTime.text =  String("0 時間 \(totalMintes) 分")
             }else if sleepMintes > gettingUpMintes{
-                
-                anserHour =   gettingUpHour  - sleepHour - 1
-                anserMintes = gettingUpMintes + (60 - sleepMintes)
-                totalTime.text = String("\(anserHour) 時間 \(anserMintes) 分")
+                totalHour =   gettingUpHour  - sleepHour - 1
+                totalMintes = gettingUpMintes + (60 - sleepMintes)
+//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
             }else{
-                anserHour =   gettingUpHour - sleepHour
-                anserMintes = gettingUpMintes - sleepMintes
-                totalTime.text = String("\(anserHour) 時間 \(anserMintes) 分")
+                totalHour =   gettingUpHour - sleepHour
+                totalMintes = gettingUpMintes - sleepMintes
+//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
             }
-        }else {
-            
         }
-       
+        ///前日に就寝→翌日起床
+        if gettingUpDay != sleepDay{
+            if gettingUpMintes == sleepMintes{
+                totalHour = (24 - sleepHour) + gettingUpHour
+//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
+            }else if sleepMintes > gettingUpMintes {
+                totalHour = (24 - sleepHour) + gettingUpHour
+                totalMintes = gettingUpMintes + (60 - sleepMintes)
+            }
+        }
         
-        
-        
-        
-        
-        
+        totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
+    
     }
-    
-    
-    
-    
+           
+        
     
 }
 
