@@ -24,6 +24,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     var totalHour: Int?
     var totalMintes: Int?
     
+    
 
     
     override func viewDidLoad() {
@@ -47,16 +48,27 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         let day = tmpDate.component(.day, from: date)
 
         dayLabel.text = "\(year)/\(month)/\(day)"
-        
-        if day == 29 {
+        if sleepDay != nil{
+            
+        if day == sleepDay! {
             sleepingTimeLabel.text = "\(totalHour!)時間\(totalMintes!)分"
-        
+        }
         }
     }
     
+    @IBAction func recordButton(_ sender: Any) {
+        
+        
+        
+        
+    }
+    
+        
+        @IBAction func unwindPrev(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
 
-        
-        
+            
+            
+        }
         
 
     

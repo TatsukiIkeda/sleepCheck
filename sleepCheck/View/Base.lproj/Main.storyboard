@@ -74,9 +74,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVC-V3-bHe">
                                         <rect key="frame" x="153" y="0.0" width="108" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="リセット"/>
+                                        <state key="normal" title="記録する"/>
                                         <connections>
-                                            <action selector="resetSegueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="daY-am-swy"/>
+                                            <action selector="resetSegue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rmK-00-Kuu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3a-Xg-bEn">
@@ -108,9 +108,12 @@
                     <tabBarItem key="tabBarItem" title="タイマー" image="timer" catalog="system" id="bny-bk-d4Y"/>
                     <connections>
                         <outlet property="gettingUpTime" destination="uCp-g1-Gyl" id="oda-Xy-lPf"/>
+                        <outlet property="gettingUpTimeButton" destination="N3a-Xg-bEn" id="baU-jA-A7Z"/>
+                        <outlet property="resetSegueButton" destination="bVC-V3-bHe" id="9Xu-QZ-dDL"/>
+                        <outlet property="sleepButton" destination="yKS-Y0-Oe9" id="TUF-7o-cI7"/>
                         <outlet property="sleepingTime" destination="evV-jr-rqd" id="vcI-cB-b2E"/>
                         <outlet property="totalTime" destination="FIk-Zl-Ok7" id="MLV-ew-h0d"/>
-                        <segue destination="oOR-Ek-1MU" kind="presentation" identifier="toNextViewController" modalPresentationStyle="fullScreen" id="HJM-fe-fQ1"/>
+                        <segue destination="oOR-Ek-1MU" kind="show" identifier="toNextViewController" id="sg7-SE-U2z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,8 +128,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="睡眠時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOu-Sd-ezY">
+                                <rect key="frame" x="32" y="546" width="142" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-S6-ulz">
+                                <rect key="frame" x="182" y="546" width="142" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0R5-Q5-Est" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="52" width="414" height="479"/>
+                                <rect key="frame" x="0.0" y="73" width="414" height="479"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -137,25 +154,22 @@
                                     <outlet property="delegate" destination="oOR-Ek-1MU" id="ftF-Ik-sub"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="睡眠時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOu-Sd-ezY">
-                                <rect key="frame" x="29" y="512" width="142" height="76"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGb-Bx-iQk">
+                                <rect key="frame" x="7" y="630" width="123" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-S6-ulz">
-                                <rect key="frame" x="179" y="514" width="142" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="記録して戻る"/>
+                                <connections>
+                                    <action selector="recordButton:" destination="oOR-Ek-1MU" eventType="touchUpInside" id="9z6-oP-vif"/>
+                                    <segue destination="z2b-JV-VeO" kind="unwind" unwindAction="unwindPrevFor:towards:" id="dHX-NA-vou"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xjl-dj-2Ae"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="PfK-Pq-jya"/>
+                    <navigationItem key="navigationItem" id="oGs-LV-KkW"/>
                     <connections>
                         <outlet property="calendar" destination="0R5-Q5-Est" id="bYc-oL-bgP"/>
                         <outlet property="dayLabel" destination="4uE-S6-ulz" id="ax4-75-mdq"/>
@@ -163,8 +177,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-gk-qgA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="z2b-JV-VeO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1356.521739130435" y="574.55357142857144"/>
+            <point key="canvasLocation" x="1357.9710144927537" y="724.55357142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a4T-p1-xnP">
@@ -187,7 +202,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HJM-fe-fQ1"/>
+        <segue reference="sg7-SE-U2z"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

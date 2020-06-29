@@ -7,12 +7,3 @@
 //
 
 import Foundation
-import RealmSwift
-
-class CalenderRealm{
-    
-    var date = ""
-    var record = ""
-    
-    
-}

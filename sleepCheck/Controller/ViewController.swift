@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var sleepingTime: UILabel!
     @IBOutlet weak var gettingUpTime: UILabel!
     @IBOutlet weak var totalTime: UILabel!
+    @IBOutlet weak var sleepButton: UIButton!
+    @IBOutlet weak var resetSegueButton: UIButton!
+    @IBOutlet weak var gettingUpTimeButton: UIButton!
     
     
     var animationView:AnimationView = AnimationView()
@@ -29,16 +32,37 @@ class ViewController: UIViewController {
     var sleepDay = 0
     var sleepHour = 0
     var sleepMintes = 0
- 
     var totalHour = 0
     var totalMintes = 0
+    var onOffCCount = 0
+    var farstOnOff = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   
+   firstAdd()
+        
+        
         // Do any additional setup after loading the view.
     }
+    //初回起動エラー回避判定・起きる・寝るボタン有効化判定
+    func firstAdd() {
+            farstOnOff = UserDefaults.standard.bool(forKey: "onOff")
+        
+        if farstOnOff == true {
+            gettingUpTimeButton.isEnabled = false
+        }else{
+            onOffCCount = UserDefaults.standard.integer(forKey: "onOff")
+            sleepButton.isEnabled = false
+            gettingUpTimeButton.isEnabled = true
+        }
+        
+        
+        
+        
+    }
+    
+    
     ///現在時間変換関数
     func dateGet(){
         let day = Date()
@@ -65,13 +89,31 @@ class ViewController: UIViewController {
         Lottienimation()
         animationView.play()
         sleepingTime.text = DateData
-        getSleepTimeDefaults()   
+        getSleepTimeDefaults()
+        farstOnOff = false
+        
+        if onOffCCount == 0 {
+        sleepButton.isEnabled = false ///寝るボタン無効化
+        gettingUpTimeButton.isEnabled = true  ///起きるボタン有効化
+            
+        }else{
+            onOffCCount = 0
+            
+            
+        }
+        farstOnOff = false
+        let onOff = UserDefaults.standard
+        onOff.set(farstOnOff, forKey: "onOff")
+        onOff.synchronize()
         
         //userDefaultsに就寝時刻を格納
       let ud = UserDefaults.standard
       ud.set(sleepingTime.text, forKey: "sleepTime")
       ud.synchronize()
     }
+    
+    
+    
     ///就寝時間を分に変換して保存
     func getSleepTimeDefaults(){
            let date = Date()
@@ -82,25 +124,31 @@ class ViewController: UIViewController {
            let sleepMintesDefaults = calendar.component(.minute, from: date)
           ///デリゲートに保存
            let userDefaults = UserDefaults.standard
-        userDefaults.set(sleepDayDefaults, forKey: "SleepDay")
-           userDefaults.set(sleepHourDefaults, forKey: "SleepHour")
+            userDefaults.set(sleepDayDefaults, forKey: "SleepDay")
+            userDefaults.set(sleepHourDefaults, forKey: "SleepHour")
             userDefaults.set(sleepMintesDefaults, forKey: "SleepMintes")
-           userDefaults.synchronize()
+            userDefaults.synchronize()
           
        }
   
+
+    
     ///起きるボタンアニメーション
     @IBAction func nightLottieStop(_ sender: Any) {
         dateGet()
-        gettingUpTime.text = DateData
-        let ud = UserDefaults.standard
-        res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
-        sleepingTime.text = res
-
         Lottienimation()
         animationView.play()
         animationView.stop()
         totaleTimes()
+        
+        
+        gettingUpTimeButton.isEnabled = false ///起きるボタン無効化
+        
+        
+        gettingUpTime.text = DateData
+        let ud = UserDefaults.standard
+        res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
+        sleepingTime.text = res
     }
 
 
@@ -117,15 +165,7 @@ class ViewController: UIViewController {
         sleepDay = UserDefaults.standard.integer(forKey: "SleepDay")
         sleepHour = UserDefaults.standard.integer(forKey: "SleepHour")
         sleepMintes = UserDefaults.standard.integer(forKey: "SleepMintes")
-//        print(gettingUpDay)
-//        print(gettingUpHour)
-//        print(gettingUpMintes)
-//        print(sleepDay)
-//        print(sleepHour)
-//        print(sleepMintes)
-//
-//
-        
+
         
 //        同日中に就寝→起床　例：深夜に就寝、等
         if gettingUpDay == sleepDay{
@@ -160,16 +200,18 @@ class ViewController: UIViewController {
         totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
     }
            
+        ///スタート、リセット、記憶ボタン
+    @IBAction func resetSegue(_ sender: UIButton) {
         
-    @IBAction func resetSegueButton(_ sender: UIButton) {
+        sleepButton.isEnabled = true
         
         print(totalHour)
         print(totalMintes)
+        if onOffCCount == 0{
+            
         
       performSegue(withIdentifier: "toNextViewController", sender: nil)
-        
-        
-            
+        }
         }
         
         
@@ -177,14 +219,13 @@ class ViewController: UIViewController {
         if segue.identifier == "toNextViewController"{
             let nextVC = segue.destination as? CalendarViewController
             nextVC?.sleepDay = sleepDay
-            nextVC?.totalHour = sleepHour
-            nextVC?.totalMintes = sleepMintes
+            nextVC?.totalHour = totalHour
+            nextVC?.totalMintes = totalMintes
             
         }
         
         
-        
-         
+      
     }
     
 }
