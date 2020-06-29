@@ -1,22 +1,40 @@
 PODS:
+  - CalculateCalendarLogic (0.3.0)
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
+  - FSCalendar (2.8.1)
   - lottie-ios (3.1.8)
+  - Realm (5.1.0):
+    - Realm/Headers (= 5.1.0)
+  - Realm/Headers (5.1.0)
+  - RealmSwift (5.1.0):
+    - Realm (= 5.1.0)
 
 DEPENDENCIES:
+  - CalculateCalendarLogic
   - Charts
+  - FSCalendar
   - lottie-ios
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - CalculateCalendarLogic
     - Charts
+    - FSCalendar
     - lottie-ios
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
+  CalculateCalendarLogic: cd5b2c706a8628bb924c5ee9d05c4f61bdbaf390
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  Realm: bdea546851e37b4cf0a2400cef115c7c26fda488
+  RealmSwift: 70945aa168db93b215c460e9c8ef680261aa28af
 
-PODFILE CHECKSUM: a05307b9eddc276973111d8e112f782788b6d5bc
+PODFILE CHECKSUM: 441bc634139ec979f981d1e331dadedd8af9a690
 
 COCOAPODS: 1.9.3

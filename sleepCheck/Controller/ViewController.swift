@@ -65,8 +65,7 @@ class ViewController: UIViewController {
         Lottienimation()
         animationView.play()
         sleepingTime.text = DateData
-
-        getSleepTimeDefaults()   ///就寝時間を分に変換してデフォルトデータベースに保存キー値は"sleeoMinuteTime"
+        getSleepTimeDefaults()   
         
         //userDefaultsに就寝時刻を格納
       let ud = UserDefaults.standard
@@ -89,35 +88,19 @@ class ViewController: UIViewController {
            userDefaults.synchronize()
           
        }
-       
-    
-
-    
+  
     ///起きるボタンアニメーション
     @IBAction func nightLottieStop(_ sender: Any) {
-        
         dateGet()
         gettingUpTime.text = DateData
         let ud = UserDefaults.standard
         res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
-//        print(res)
         sleepingTime.text = res
-        
-        
+
         Lottienimation()
         animationView.play()
         animationView.stop()
-       
-       
-//        gettingUpTimes() //起床時間を分に変換する
-       
         totaleTimes()
-       
-
-       
-
-       
-        
     }
 
 
@@ -134,47 +117,75 @@ class ViewController: UIViewController {
         sleepDay = UserDefaults.standard.integer(forKey: "SleepDay")
         sleepHour = UserDefaults.standard.integer(forKey: "SleepHour")
         sleepMintes = UserDefaults.standard.integer(forKey: "SleepMintes")
-        print(gettingUpDay)
-        print(gettingUpHour)
-        print(gettingUpMintes)
-        print(sleepDay)
-        print(sleepHour)
-        print(sleepMintes)
+//        print(gettingUpDay)
+//        print(gettingUpHour)
+//        print(gettingUpMintes)
+//        print(sleepDay)
+//        print(sleepHour)
+//        print(sleepMintes)
+//
+//
         
         
-        
-        
-        //同日中に就寝→起床　例：深夜に就寝、等
+//        同日中に就寝→起床　例：深夜に就寝、等
         if gettingUpDay == sleepDay{
-            if gettingUpHour == sleepHour{
-                 totalMintes =  gettingUpMintes - sleepMintes
-                totalTime.text =  String("0 時間 \(totalMintes) 分")
-            }else if sleepMintes > gettingUpMintes{
+            if gettingUpHour == sleepHour {
+                totalMintes =  gettingUpMintes - sleepMintes
+                totalHour =   0
+            }else if sleepMintes > gettingUpMintes {
                 totalHour =   gettingUpHour  - sleepHour - 1
                 totalMintes = gettingUpMintes + (60 - sleepMintes)
-//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
             }else{
                 totalHour =   gettingUpHour - sleepHour
                 totalMintes = gettingUpMintes - sleepMintes
-//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
             }
         }
         ///前日に就寝→翌日起床
-        if gettingUpDay != sleepDay{
-            if gettingUpMintes == sleepMintes{
+        if gettingUpDay != sleepDay {
+            if gettingUpMintes == sleepMintes {
                 totalHour = (24 - sleepHour) + gettingUpHour
-//                totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
+                totalMintes = 0
             }else if sleepMintes > gettingUpMintes {
-                totalHour = (24 - sleepHour) + gettingUpHour
+                totalHour = (23 - sleepHour) + gettingUpHour
                 totalMintes = gettingUpMintes + (60 - sleepMintes)
+            }else{
+                totalHour = (23 - sleepHour) + gettingUpHour
+                totalMintes = gettingUpMintes + sleepMintes
+                if totalMintes > 60 {
+                    totalMintes = gettingUpMintes  - sleepMintes
+                    totalHour = totalHour + 1
+                }
             }
         }
-        
         totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
-    
     }
            
         
+    @IBAction func resetSegueButton(_ sender: UIButton) {
+        
+        print(totalHour)
+        print(totalMintes)
+        
+      performSegue(withIdentifier: "toNextViewController", sender: nil)
+        
+        
+            
+        }
+        
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNextViewController"{
+            let nextVC = segue.destination as? CalendarViewController
+            nextVC?.sleepDay = sleepDay
+            nextVC?.totalHour = sleepHour
+            nextVC?.totalMintes = sleepMintes
+            
+        }
+        
+        
+        
+         
+    }
     
 }
 

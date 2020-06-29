@@ -8,6 +8,9 @@ target 'sleepCheck' do
   # Pods for sleepCheck
 
 pod 'lottie-ios' 
+pod 'RealmSwift'
+pod 'FSCalendar'
+pod 'CalculateCalendarLogic'
 
 pod 'Charts'
 
