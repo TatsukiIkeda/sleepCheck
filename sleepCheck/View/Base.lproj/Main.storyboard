@@ -160,7 +160,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="記録して戻る"/>
                                 <connections>
-                                    <action selector="recordButton:" destination="oOR-Ek-1MU" eventType="touchUpInside" id="9z6-oP-vif"/>
+                                    <action selector="recordButton:" destination="oOR-Ek-1MU" eventType="touchUpInside" id="HPZ-lb-C7B"/>
                                     <segue destination="z2b-JV-VeO" kind="unwind" unwindAction="unwindPrevFor:towards:" id="dHX-NA-vou"/>
                                 </connections>
                             </button>
