@@ -17,7 +17,6 @@
 		D865604824A27FDF00FC5B8E /* night.json in Resources */ = {isa = PBXBuildFile; fileRef = D865604724A27FDF00FC5B8E /* night.json */; };
 		D865605124A6650300FC5B8E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865605024A6650300FC5B8E /* CalendarViewController.swift */; };
 		D86A367524A8F8D5008414BB /* CalendarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A367424A8F8D5008414BB /* CalendarRealm.swift */; };
-		D86A367724AA73E6008414BB /* Insert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A367624AA73E6008414BB /* Insert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		D865604724A27FDF00FC5B8E /* night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = night.json; sourceTree = "<group>"; };
 		D865605024A6650300FC5B8E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D86A367424A8F8D5008414BB /* CalendarRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRealm.swift; sourceTree = "<group>"; };
-		D86A367624AA73E6008414BB /* Insert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insert.swift; sourceTree = "<group>"; };
 		FB723855FC8A35B818C74E92 /* Pods-sleepCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sleepCheck.release.xcconfig"; path = "Target Support Files/Pods-sleepCheck/Pods-sleepCheck.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				D86A367424A8F8D5008414BB /* CalendarRealm.swift */,
-				D86A367624AA73E6008414BB /* Insert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,7 +240,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D86A367724AA73E6008414BB /* Insert.swift in Sources */,
 				D844291824A23C00004B69FF /* ViewController.swift in Sources */,
 				D844291424A23C00004B69FF /* AppDelegate.swift in Sources */,
 				D844291624A23C00004B69FF /* SceneDelegate.swift in Sources */,

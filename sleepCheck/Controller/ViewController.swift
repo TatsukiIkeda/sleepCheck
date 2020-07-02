@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sleepingTime: UILabel!
     @IBOutlet weak var gettingUpTime: UILabel!
+    
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var resetSegueButton: UIButton!
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
     var onOffCCount = 0
     var gettingUpDay = 0
     var gettingUpMonth = 0
+    var gettingUpYear = 0
     var farstOnOff = true
     
     override func viewDidLoad() {
@@ -159,6 +161,7 @@ class ViewController: UIViewController {
         let date = Date()
         let calendar = Calendar.current
         ///起床時間　日時　時間　分に分ける
+        gettingUpYear = calendar.component(.year, from: date)
         gettingUpMonth = calendar.component(.month, from: date)
         gettingUpDay = calendar.component(.day, from: date)
         let gettingUpHour = calendar.component(.hour, from: date)
@@ -221,6 +224,9 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextViewController"{
             let nextVC = segue.destination as? CalendarViewController
+            nextVC?.sleepingTime = sleepingTime.text
+            nextVC?.gettingUpTime = gettingUpTime.text
+            nextVC?.gettingUpYear = gettingUpYear
             nextVC?.gettingUpMonth = gettingUpMonth
             nextVC?.gettingUpDay = gettingUpDay
             nextVC?.totalHour = totalHour

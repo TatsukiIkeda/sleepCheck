@@ -129,21 +129,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="睡眠時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOu-Sd-ezY">
-                                <rect key="frame" x="32" y="546" width="142" height="76"/>
+                                <rect key="frame" x="170" y="492" width="142" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-S6-ulz">
-                                <rect key="frame" x="182" y="546" width="142" height="74"/>
+                                <rect key="frame" x="20" y="478" width="142" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0R5-Q5-Est" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="73" width="414" height="479"/>
+                                <rect key="frame" x="0.0" y="73" width="414" height="391"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -155,7 +155,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGb-Bx-iQk">
-                                <rect key="frame" x="7" y="630" width="123" height="52"/>
+                                <rect key="frame" x="20" y="563" width="123" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="記録して戻る"/>
@@ -164,6 +164,20 @@
                                     <segue destination="z2b-JV-VeO" kind="unwind" unwindAction="unwindPrevFor:towards:" id="dHX-NA-vou"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJb-XJ-5fa">
+                                <rect key="frame" x="170" y="563" width="119" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK3-TF-0J2">
+                                <rect key="frame" x="170" y="644" width="96" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xjl-dj-2Ae"/>
@@ -173,7 +187,10 @@
                     <connections>
                         <outlet property="calendar" destination="0R5-Q5-Est" id="bYc-oL-bgP"/>
                         <outlet property="dayLabel" destination="4uE-S6-ulz" id="ax4-75-mdq"/>
-                        <outlet property="sleepingTimeLabel" destination="IOu-Sd-ezY" id="mWB-X3-Oph"/>
+                        <outlet property="gettingUpLabel" destination="LK3-TF-0J2" id="2Pz-4c-vm0"/>
+                        <outlet property="recordButton" destination="VGb-Bx-iQk" id="gGz-nO-6zx"/>
+                        <outlet property="sleepingLabel" destination="BJb-XJ-5fa" id="rca-xa-HLh"/>
+                        <outlet property="sleepingTimeLabel" destination="IOu-Sd-ezY" id="3X1-yI-SAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-gk-qgA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

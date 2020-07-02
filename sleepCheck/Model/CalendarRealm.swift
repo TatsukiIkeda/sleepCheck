@@ -10,10 +10,13 @@ import Foundation
 import RealmSwift
 
 class CalenderRealm: Object{
+    
+    @objc dynamic var year : String = ""
     @objc dynamic var month : String = ""
     @objc dynamic var day : String = ""
-   @objc dynamic var hour : String  = ""
-   @objc dynamic var mintes : String  = ""
-
+    @objc dynamic var hour : String  = ""
+    @objc dynamic var mintes : String  = ""
+    @objc dynamic var sleeping : String = ""
+    @objc dynamic var gettingUp : String = ""
     
 }
