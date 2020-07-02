@@ -24,7 +24,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     var gettingUpDay: Int?
     var totalHour: Int?
     var totalMintes: Int?
-    
+    var toDay = 0
     
     
     
@@ -47,24 +47,29 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
        print(year)
        print(month)
        print(day)
-       
-       
-       let da = "\(year)\(month)\(day)"
+       toDay = day
 
+        let da = "\(month)月\(day)日"
+        dayLabel.text = da
         let realm = try! Realm()
         var result = realm.objects(CalenderRealm.self)
         print("1")
-        let results =  realm.objects(CalenderRealm.self).filter("day == '2'")
-        let resultss =  realm.objects(CalenderRealm.self).last
-
+        let results =  realm.objects(CalenderRealm.self).filter("day == '2'AND month == '7'")
+        let resultss =  realm.objects(CalenderRealm.self).filter("day == '\(toDay)'").last
+ print("1")
 //        print("result:", result.description)
-        print(results)
+        print(result)
         print(resultss)
-        print("日 \(result[1].day)")
+//        print("日 \(result[1].day)")
         print(resultss,month)
-      
-        sleepingTimeLabel.text = "\((resultss?.mintes)!)"
-                
+        if  resultss?.day != nil {
+            
+//        if "\(toDay)"  == resultss?.day
+        sleepingTimeLabel.text = "\((resultss?.hour)!)時間\((resultss?.mintes)!)分"
+        }else{
+            sleepingTimeLabel.text = "記録なし"
+        }
+        
             
            
     }
