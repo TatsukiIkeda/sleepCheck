@@ -90,9 +90,9 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             gettingUpLabel.text = "\((results?.gettingUp)!)"
             sleepingLabel.text = "\((results?.sleeping)!)"
         }else{
-            sleepingTimeLabel.text = ""
-            gettingUpLabel.text = ""
-            sleepingLabel.text = ""
+            sleepingTimeLabel.text = "00:00"
+            gettingUpLabel.text = "00:00"
+            sleepingLabel.text = "00:00"
         }
         
         
