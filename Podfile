@@ -11,6 +11,9 @@ pod 'lottie-ios'
 pod 'RealmSwift'
 pod 'FSCalendar'
 pod 'CalculateCalendarLogic'
+pod 'EMTNeumorphicView'
+pod 'Firebase/AdMob'
+
 
 pod 'Charts'
 
