@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sleepingTime: UILabel!
     @IBOutlet weak var gettingUpTime: UILabel!
-    
     @IBOutlet weak var totalTime: UILabel!
     @IBOutlet weak var sleepButton: EMTNeumorphicButton!
     @IBOutlet weak var resetSegueButton: EMTNeumorphicButton!
@@ -30,17 +29,17 @@ class ViewController: UIViewController {
     let day = Date()
     /// インスタンス生成
     var dateFormatter = DateFormatter()
-    var DateData = ""
+    var dateData = ""
     var res = ""
     var sleepDay = 0
     var sleepHour = 0
     var sleepMintes = 0
     var totalHour = 0
     var totalMintes = 0
-    var onOffCCount = 0
     var gettingUpDay = 0
     var gettingUpMonth = 0
     var gettingUpYear = 0
+    var onOffSwitch = 0
     var farstOnOff = true
     
     
@@ -49,15 +48,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // In this case, we instantiate the banner with desired ad size.
-          bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-
-          addBannerViewToView(bannerView)
-        }
-
-        func addBannerViewToView(_ bannerView: GADBannerView) {
-          bannerView.translatesAutoresizingMaskIntoConstraints = false
-          view.addSubview(bannerView)
-          view.addConstraints(
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
+        addBannerViewToView(bannerView)
+        firstBoot()
+        
+        
+        
+    }
+    //広告の位置に関する関数
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
             [NSLayoutConstraint(item: bannerView,
                                 attribute: .bottom,
                                 relatedBy: .equal,
@@ -72,28 +75,25 @@ class ViewController: UIViewController {
                                 attribute: .centerX,
                                 multiplier: 1,
                                 constant: 0)
-            ])
+        ])
         
-    
         //寝るボタンデザイン
         sleepButton.neumorphicLayer?.depthType = .convex
         sleepButton.neumorphicLayer?.elementDepth = 10
         sleepButton.neumorphicLayer?.cornerRadius = 24
         sleepButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
-        
         //起きるボタンデザイン
         gettingUpTimeButton.layer.cornerRadius = 20
         gettingUpTimeButton.neumorphicLayer?.depthType = .convex
         gettingUpTimeButton.neumorphicLayer?.elementDepth = 10
+        gettingUpTimeButton.neumorphicLayer?.cornerRadius = 24
         gettingUpTimeButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
-        
         //リセットボタンデザイン
         resetSegueButton.layer.cornerRadius = 20
         resetSegueButton.neumorphicLayer?.depthType = .convex
         resetSegueButton.neumorphicLayer?.elementDepth = 10
+        resetSegueButton.neumorphicLayer?.cornerRadius = 24
         resetSegueButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
- 
-        
     }
     
     //広告関連の関数
@@ -101,45 +101,40 @@ class ViewController: UIViewController {
         //  広告インスタンス作成
         var admobView = GADBannerView()
         admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        
         //  広告位置設定
         let safeArea = self.view.safeAreaInsets.bottom
         admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
         admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-        
         //  広告ID設定
         admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
-
         //  広告表示
         admobView.rootViewController = self
         admobView.load(GADRequest())
         self.view.addSubview(admobView)
     }
     
- 
     
     //初回起動エラー回避判定・起きる・寝るボタン有効化判定
-    func firstAdd() {
+    func firstBoot() {
         farstOnOff = UserDefaults.standard.bool(forKey: "onOff")
-        
         
         if farstOnOff == true {
             gettingUpTimeButton.isEnabled = false
+            sleepButton.isEnabled = true
         }else{
-            onOffCCount = UserDefaults.standard.integer(forKey: "onOff")
-            sleepButton.isEnabled = false
             gettingUpTimeButton.isEnabled = true
+            sleepButton.isEnabled = false
         }
-    }//firstAdd終了
+    }
     
-    ///現在時間変換関数
+    ///現在時間取得関数
     func dateGet(){
         let day = Date()
         ///ロンドン時間を日本時間に変換
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMdHm", options: 0, locale: Locale(identifier: "ja_JP"))
         ///時間だけをdataに指定
-        DateData = String(dateFormatter.string(from: day).suffix(5))
-        print(DateData)
+        dateData = String(dateFormatter.string(from: day).suffix(5))
+        print(dateData)
     }
     
     ///Lottieアニメーション設定
@@ -158,32 +153,27 @@ class ViewController: UIViewController {
     @IBAction func nightLottieStart(_ sender: Any) {
         dateGet()
         Lottienimation()
-        
-        sleepingTime.text = DateData
+        sleepingTime.text = dateData
         getSleepTimeDefaults()
         
         
-        farstOnOff = false
         
-        if onOffCCount == 0 {
-            sleepButton.isEnabled = false ///寝るボタン無効化
-            gettingUpTimeButton.isEnabled = true  ///起きるボタン有効化
+        if farstOnOff == true {
             
-        }else{
-            onOffCCount = 0
             farstOnOff = false
+            let onOff = UserDefaults.standard
+            onOff.set(farstOnOff, forKey: "onOff")
+            onOff.synchronize()
+        }else{
+            
         }
-        
-        let onOff = UserDefaults.standard
-        onOff.set(farstOnOff, forKey: "onOff")
-        onOff.synchronize()
         
         //userDefaultsに就寝時刻を格納
         let ud = UserDefaults.standard
         ud.set(sleepingTime.text, forKey: "sleepTime")
         ud.synchronize()
         
-        
+        gettingUpTimeButton.isEnabled = true
         sleepButton.isEnabled = false
     }
     
@@ -211,13 +201,27 @@ class ViewController: UIViewController {
         totaleTimes()
         
         gettingUpTimeButton.isEnabled = false ///起きるボタン無効化
+        onOffSwitch = 1
+        (resetSegueButton as AnyObject).setTitle("記録する", for: .normal)
         
-      (resetSegueButton as AnyObject).setTitle("記録する", for: .normal)
-        
-        gettingUpTime.text = DateData
+        gettingUpTime.text = dateData
         let ud = UserDefaults.standard
         res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
         sleepingTime.text = res
+        
+        
+        if farstOnOff == false {
+            
+            farstOnOff = true
+            let onOff = UserDefaults.standard
+            onOff.set(farstOnOff, forKey: "onOff")
+            onOff.synchronize()
+        }else{
+            
+        }
+        
+        
+        
     }
     
     
@@ -275,12 +279,23 @@ class ViewController: UIViewController {
     @IBAction func resetSegue(_ sender: UIButton) {
         
         sleepButton.isEnabled = true
+        gettingUpTimeButton.isEnabled = false
         
-        print(totalHour)
-        print(totalMintes)
-        if onOffCCount == 0{
-            
+        
+        if onOffSwitch == 1{
+            onOffSwitch = 0
+            sender.setTitle("リセット", for: .normal)
+            ///画面遷移
             performSegue(withIdentifier: "toNextViewController", sender: nil)
+           
+        }else{
+            onOffSwitch = 0
+            
+            sleepingTime.text = "00:00"
+            gettingUpTime.text = "00:00"
+            totalTime.text = "00:00"
+            
+            
         }
     }
     
