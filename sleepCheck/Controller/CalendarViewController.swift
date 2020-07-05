@@ -130,10 +130,10 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         //        let results =  realm.objects(CalenderRealm.self).filter("day == '2'AND month == '7'")
         let results =  realm.objects(CalenderRealm.self).filter("day == '\(toDay)'").last
 
-//        print(result)
+//        print("\(month)")
         
         print(results,month)
-        if  results?.day != nil && results?.hour != nil {
+        if  results?.day != nil && results?.hour != nil && results?.month == "\(month)" && results?.year == "\(year)"{
             
             sleepingTimeLabel.text = "\((results?.hour)!)時間\((results?.mintes)!)分"
             gettingUpLabel.text = "\((results?.gettingUp)!)"

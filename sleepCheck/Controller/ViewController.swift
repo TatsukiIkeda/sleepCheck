@@ -250,8 +250,8 @@ class ViewController: UIViewController {
                 totalHour = (23 - sleepHour) + gettingUpHour
                 totalMintes = gettingUpMintes + (60 - sleepMintes)
             }else{
-                totalHour = (23 - sleepHour) + gettingUpHour
-                totalMintes = gettingUpMintes + sleepMintes
+                totalHour = (23 - sleepHour) + gettingUpHour + 1
+                totalMintes = gettingUpMintes - sleepMintes
                 if totalMintes > 60 {
                     totalMintes = gettingUpMintes  - sleepMintes
                     totalHour = totalHour + 1
