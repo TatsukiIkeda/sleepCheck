@@ -47,15 +47,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // In this case, we instantiate the banner with desired ad size.
+        
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
         addBannerViewToView(bannerView)
         firstBoot()
-        
-        
-        
+        // In this case, we instantiate the banner with desired ad size.
     }
+    
     //広告の位置に関する関数
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -106,18 +105,18 @@ class ViewController: UIViewController {
         admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
         admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
         //  広告ID設定
-        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
+        admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
         //  広告表示
         admobView.rootViewController = self
         admobView.load(GADRequest())
         self.view.addSubview(admobView)
     }
-    
-    
+
+
     //初回起動エラー回避判定・起きる・寝るボタン有効化判定
     func firstBoot() {
         farstOnOff = UserDefaults.standard.bool(forKey: "onOff")
-        
+         //アプリ起動時にどのボタンを有効化するか判定
         if farstOnOff == true {
             gettingUpTimeButton.isEnabled = false
             sleepButton.isEnabled = true
@@ -159,7 +158,7 @@ class ViewController: UIViewController {
         
         
         if farstOnOff == true {
-            
+            //アプリ起動時にどのボタンを有効化するか判定
             farstOnOff = false
             let onOff = UserDefaults.standard
             onOff.set(farstOnOff, forKey: "onOff")
@@ -209,19 +208,6 @@ class ViewController: UIViewController {
         res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
         sleepingTime.text = res
         
-        
-        if farstOnOff == false {
-            
-            farstOnOff = true
-            let onOff = UserDefaults.standard
-            onOff.set(farstOnOff, forKey: "onOff")
-            onOff.synchronize()
-        }else{
-            
-        }
-        
-        
-        
     }
     
     
@@ -242,7 +228,7 @@ class ViewController: UIViewController {
         sleepMintes = UserDefaults.standard.integer(forKey: "SleepMintes")
         
         
-        //        同日中に就寝→起床　例：深夜に就寝、等
+        //  同日中に就寝→起床　例：深夜に就寝、等
         if gettingUpDay == sleepDay{
             if gettingUpHour == sleepHour {
                 totalMintes =  gettingUpMintes - sleepMintes
@@ -272,7 +258,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        totalTime.text = String("\(totalHour) 時間 \(totalMintes) 分")
+        totalTime.text = String("\(totalHour)時間 \(totalMintes)分")
     }
     
     ///スタート、リセット、記憶ボタン
@@ -285,17 +271,25 @@ class ViewController: UIViewController {
         if onOffSwitch == 1{
             onOffSwitch = 0
             sender.setTitle("リセット", for: .normal)
+             //アプリ起動時にどのボタンを有効化するか判定
+            if farstOnOff == false {
+                       farstOnOff = true
+                       let onOff = UserDefaults.standard
+                       onOff.set(farstOnOff, forKey: "onOff")
+                       onOff.synchronize()
+                   }else{
+                       
+                   }
+            
             ///画面遷移
             performSegue(withIdentifier: "toNextViewController", sender: nil)
            
         }else{
             onOffSwitch = 0
-            
             sleepingTime.text = "00:00"
             gettingUpTime.text = "00:00"
-            totalTime.text = "00:00"
-            
-            
+            totalTime.text = "0時間0分"
+     
         }
     }
     

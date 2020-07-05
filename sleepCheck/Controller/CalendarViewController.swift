@@ -88,21 +88,21 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
            //  広告インスタンス作成
            var admobView = GADBannerView()
            admobView = GADBannerView(adSize:kGADAdSizeBanner)
-           
+
            //  広告位置設定
            let safeArea = self.view.safeAreaInsets.bottom
            admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
            admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-           
+
            //  広告ID設定
-           admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
+           admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
 
            //  広告表示
            admobView.rootViewController = self
            admobView.load(GADRequest())
            self.view.addSubview(admobView)
        }
-       
+
     
     
     
