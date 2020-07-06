@@ -16,14 +16,10 @@ import EMTNeumorphicView
 class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     
     @IBOutlet weak var recordButton: EMTNeumorphicButton!
-    
     @IBOutlet weak var sleepingTimeLabel: UILabel!
-    
     @IBOutlet weak var sleepingLabel: UILabel!
-    
     @IBOutlet weak var gettingUpLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
-    
     @IBOutlet weak var calendar: FSCalendar!
     var bannerView: GADBannerView!
     var sleepingTime: String?
@@ -81,8 +77,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         }
     }
     
-    
-    
     //広告関連の関数
        override func viewDidLayoutSubviews(){
            //  広告インスタンス作成
@@ -95,7 +89,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
            admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
 
            //  広告ID設定
-           admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
+           admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
 
            //  広告表示
            admobView.rootViewController = self
@@ -103,11 +97,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
            self.view.addSubview(admobView)
        }
 
-    
-    
-    
-    
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //        let select = getDay(date)
         //        dayLabel.text = "\(select)"
@@ -139,7 +128,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             gettingUpLabel.text = "\((results?.gettingUp)!)"
             sleepingLabel.text = "\((results?.sleeping)!)"
         }else{
-            sleepingTimeLabel.text = "00:00"
+            sleepingTimeLabel.text = "0時間0分"
             gettingUpLabel.text = "00:00"
             sleepingLabel.text = "00:00"
         }
@@ -157,21 +146,11 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             let Events = [CalenderRealm(value: ["year": "\(gettingUpYear!)", "month": "\(gettingUpMonth!)", "day": "\(gettingUpDay!)", "hour": "\(totalHour!)", "mintes": "\(totalMintes!)", "sleeping": "\(sleepingTime!)", "gettingUp": "\(gettingUpTime!)"])]
             
             realm.add(Events)//データ書き込み
-            
-            
-            
-            
+                      
         }
-        
-        
     }
-    
     
     @IBAction func unwindPrev(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         
-        
-        
     }
-    
-    
 }

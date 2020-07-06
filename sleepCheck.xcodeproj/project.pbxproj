@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		D20066683F197B907BC930F7 /* Pods-sleepCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sleepCheck.debug.xcconfig"; path = "Target Support Files/Pods-sleepCheck/Pods-sleepCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		D659938B3ADC1AD77614B8CF /* Pods_sleepCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sleepCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D844291024A23C00004B69FF /* sleepCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sleepCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D844291024A23C00004B69FF /* SleepCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D844291324A23C00004B69FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D844291524A23C00004B69FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D844291724A23C00004B69FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		D844291124A23C00004B69FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D844291024A23C00004B69FF /* sleepCheck.app */,
+				D844291024A23C00004B69FF /* SleepCalendar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			);
 			name = sleepCheck;
 			productName = sleepCheck;
-			productReference = D844291024A23C00004B69FF /* sleepCheck.app */;
+			productReference = D844291024A23C00004B69FF /* SleepCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -400,8 +400,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.sleepCheck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
+				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -419,8 +419,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.sleepCheck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
+				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

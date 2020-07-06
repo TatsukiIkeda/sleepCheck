@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetSegueButton: EMTNeumorphicButton!
     @IBOutlet weak var gettingUpTimeButton: EMTNeumorphicButton!
     
-    
     var animationView:AnimationView = AnimationView()
     let ainamtion = Animation.named("ok")
     var bannerView: GADBannerView!
@@ -42,15 +41,13 @@ class ViewController: UIViewController {
     var onOffSwitch = 0
     var farstOnOff = true
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
         addBannerViewToView(bannerView)
+        
         firstBoot()
         // In this case, we instantiate the banner with desired ad size.
     }
@@ -105,7 +102,7 @@ class ViewController: UIViewController {
         admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
         admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
         //  広告ID設定
-        admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
+        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
         //  広告表示
         admobView.rootViewController = self
         admobView.load(GADRequest())
@@ -118,11 +115,12 @@ class ViewController: UIViewController {
         farstOnOff = UserDefaults.standard.bool(forKey: "onOff")
          //アプリ起動時にどのボタンを有効化するか判定
         if farstOnOff == true {
-            gettingUpTimeButton.isEnabled = false
-            sleepButton.isEnabled = true
-        }else{
             gettingUpTimeButton.isEnabled = true
             sleepButton.isEnabled = false
+        }else{
+            gettingUpTimeButton.isEnabled = false
+            sleepButton.isEnabled = true
+            farstOnOff = false
         }
     }
     
@@ -147,7 +145,6 @@ class ViewController: UIViewController {
         animationView.play()
     }
     
-    
     ///寝るボタン
     @IBAction func nightLottieStart(_ sender: Any) {
         dateGet()
@@ -155,11 +152,9 @@ class ViewController: UIViewController {
         sleepingTime.text = dateData
         getSleepTimeDefaults()
         
-        
-        
-        if farstOnOff == true {
+        if farstOnOff == false {
             //アプリ起動時にどのボタンを有効化するか判定
-            farstOnOff = false
+            farstOnOff = true
             let onOff = UserDefaults.standard
             onOff.set(farstOnOff, forKey: "onOff")
             onOff.synchronize()
@@ -210,7 +205,6 @@ class ViewController: UIViewController {
         
     }
     
-    
     ///睡眠時間算出
     func totaleTimes(){
         let date = Date()
@@ -226,7 +220,6 @@ class ViewController: UIViewController {
         sleepDay = UserDefaults.standard.integer(forKey: "SleepDay")
         sleepHour = UserDefaults.standard.integer(forKey: "SleepHour")
         sleepMintes = UserDefaults.standard.integer(forKey: "SleepMintes")
-        
         
         //  同日中に就寝→起床　例：深夜に就寝、等
         if gettingUpDay == sleepDay{
@@ -272,8 +265,8 @@ class ViewController: UIViewController {
             onOffSwitch = 0
             sender.setTitle("リセット", for: .normal)
              //アプリ起動時にどのボタンを有効化するか判定
-            if farstOnOff == false {
-                       farstOnOff = true
+            if farstOnOff == true {
+                       farstOnOff = false
                        let onOff = UserDefaults.standard
                        onOff.set(farstOnOff, forKey: "onOff")
                        onOff.synchronize()
