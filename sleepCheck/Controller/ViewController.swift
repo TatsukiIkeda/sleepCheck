@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
         admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
         //  広告ID設定
-        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
+        admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
         //  広告表示
         admobView.rootViewController = self
         admobView.load(GADRequest())
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
     
     ///Lottieアニメーション設定
     func Lottienimation() {
-        animationView.frame = CGRect(x: 0, y: 30, width: view.frame.size.width, height: (view.frame.size.height) / 3)
+        animationView.frame = CGRect(x: 0, y: 50, width: view.frame.size.width, height: (view.frame.size.height) / 3)
         animationView.animation = ainamtion
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
@@ -194,7 +194,9 @@ class ViewController: UIViewController {
         Lottienimation()
         totaleTimes()
         
-        gettingUpTimeButton.isEnabled = false ///起きるボタン無効化
+        gettingUpTimeButton.isEnabled = false
+        
+        ///起きるボタン無効化
         onOffSwitch = 1
         (resetSegueButton as AnyObject).setTitle("記録する", for: .normal)
         

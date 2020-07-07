@@ -89,7 +89,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
            admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
 
            //  広告ID設定
-           admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"   //　←　本番IDに戻す
+           admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
 
            //  広告表示
            admobView.rootViewController = self
@@ -105,10 +105,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
-        //        let dy = day
-//        print(year)
-//        print(month)
-//        print(day)
+
         toDay = day
         
         let da = "\(month)月\(day)日"
@@ -116,12 +113,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         let realm = try! Realm()
         var result = realm.objects(CalenderRealm.self)
 
-        //        let results =  realm.objects(CalenderRealm.self).filter("day == '2'AND month == '7'")
         let results =  realm.objects(CalenderRealm.self).filter("day == '\(toDay)'").last
 
-//        print("\(month)")
-        
-        print(results,month)
         if  results?.day != nil && results?.hour != nil && results?.month == "\(month)" && results?.year == "\(year)"{
             
             sleepingTimeLabel.text = "\((results?.hour)!)時間\((results?.mintes)!)分"
@@ -132,8 +125,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             gettingUpLabel.text = "00:00"
             sleepingLabel.text = "00:00"
         }
-        
-        
     }
     @IBAction func recordButton(_ sender: UIButton) {
         
