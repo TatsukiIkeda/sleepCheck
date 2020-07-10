@@ -17,7 +17,7 @@
 		D865605124A6650300FC5B8E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865605024A6650300FC5B8E /* CalendarViewController.swift */; };
 		D86A367524A8F8D5008414BB /* CalendarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A367424A8F8D5008414BB /* CalendarRealm.swift */; };
 		D86A367B24AE5C45008414BB /* ok.json in Resources */ = {isa = PBXBuildFile; fileRef = D86A367A24AE5C45008414BB /* ok.json */; };
-		D86A367D24AF2AC9008414BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D86A367C24AF2AC9008414BB /* GoogleService-Info.plist */; };
+		D8D89A9E24B4F8E100C95C28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8D89A9D24B4F8E100C95C28 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		D865605024A6650300FC5B8E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D86A367424A8F8D5008414BB /* CalendarRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRealm.swift; sourceTree = "<group>"; };
 		D86A367A24AE5C45008414BB /* ok.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ok.json; sourceTree = "<group>"; };
-		D86A367C24AF2AC9008414BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8D89A9D24B4F8E100C95C28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB723855FC8A35B818C74E92 /* Pods-sleepCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sleepCheck.release.xcconfig"; path = "Target Support Files/Pods-sleepCheck/Pods-sleepCheck.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +96,7 @@
 				D844291C24A23C01004B69FF /* Assets.xcassets */,
 				D844291E24A23C01004B69FF /* LaunchScreen.storyboard */,
 				D86A367A24AE5C45008414BB /* ok.json */,
-				D86A367C24AF2AC9008414BB /* GoogleService-Info.plist */,
+				D8D89A9D24B4F8E100C95C28 /* GoogleService-Info.plist */,
 				D844292124A23C01004B69FF /* Info.plist */,
 			);
 			path = sleepCheck;
@@ -189,9 +189,9 @@
 			files = (
 				D86A367B24AE5C45008414BB /* ok.json in Resources */,
 				D844292024A23C01004B69FF /* LaunchScreen.storyboard in Resources */,
-				D86A367D24AF2AC9008414BB /* GoogleService-Info.plist in Resources */,
 				D844291D24A23C01004B69FF /* Assets.xcassets in Resources */,
 				D844291B24A23C00004B69FF /* Main.storyboard in Resources */,
+				D8D89A9E24B4F8E100C95C28 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.sleepCheck;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
 				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -419,7 +419,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.sleepCheck;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
 				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

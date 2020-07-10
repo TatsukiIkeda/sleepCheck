@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     var animationView:AnimationView = AnimationView()
     let ainamtion = Animation.named("ok")
-    var bannerView: GADBannerView!
+    var bannerView: GADBannerView!   //広告変数
     ///現在時間取得（ロンドン時間）
     let day = Date()
     /// インスタンス生成
@@ -45,33 +45,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        
+
         addBannerViewToView(bannerView)
         
+        bannerView.adUnitID = "ca-app-pub-4646130991450896/7572842532"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         firstBoot()
-        // In this case, we instantiate the banner with desired ad size.
-    }
-    
-    //広告の位置に関する関数
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: self.resetSegueButton,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-        ])
         
         //寝るボタンデザイン
         sleepButton.neumorphicLayer?.depthType = .convex
@@ -90,24 +71,36 @@ class ViewController: UIViewController {
         resetSegueButton.neumorphicLayer?.elementDepth = 10
         resetSegueButton.neumorphicLayer?.cornerRadius = 24
         resetSegueButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
+        
+        
+        // In this case, we instantiate the banner with desired ad size.
     }
     
-    //広告関連の関数
-    override func viewDidLayoutSubviews(){
-        //  広告インスタンス作成
-        var admobView = GADBannerView()
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        //  広告位置設定
-        let safeArea = self.view.safeAreaInsets.bottom
-        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-        //  広告ID設定
-        admobView.adUnitID = "ca-app-pub-4646130991450896/5519586349"   //　←　本番IDに戻す
-        //  広告表示
-        admobView.rootViewController = self
-        admobView.load(GADRequest())
-        self.view.addSubview(admobView)
+    //広告の位置に関する関数
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+        ])
+        
+
     }
+    
+
 
 
     //初回起動エラー回避判定・起きる・寝るボタン有効化判定
