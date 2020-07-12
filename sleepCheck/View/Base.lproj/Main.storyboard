@@ -164,17 +164,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjU-i1-PyN" userLabel="BaseView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="789"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="838"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qp2-cS-adL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="394.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0R5-Q5-Est" customClass="FSCalendar">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="394.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy年 MM月"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                                                <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                                <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dataSource" destination="oOR-Ek-1MU" id="c9o-ad-lLm"/>
@@ -182,43 +191,43 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-S6-ulz">
-                                        <rect key="frame" x="0.0" y="394.5" width="414" height="55"/>
+                                        <rect key="frame" x="0.0" y="419" width="414" height="58.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BedTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0I-g6-tQW">
-                                        <rect key="frame" x="0.0" y="497" width="207" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="528" width="207" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WakeUpTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwX-Xx-Kdp">
-                                        <rect key="frame" x="0.0" y="544.5" width="207" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="578" width="207" height="50.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJb-XJ-5fa">
-                                        <rect key="frame" x="207" y="497" width="207" height="47.5"/>
+                                        <rect key="frame" x="207" y="528" width="207" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK3-TF-0J2">
-                                        <rect key="frame" x="207" y="544.5" width="207" height="47.5"/>
+                                        <rect key="frame" x="207" y="578" width="207" height="50.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0時間0分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOu-Sd-ezY">
-                                        <rect key="frame" x="207" y="449.5" width="207" height="47.5"/>
+                                        <rect key="frame" x="207" y="477.5" width="207" height="50.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SleepHours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJn-Iy-B1e">
-                                        <rect key="frame" x="0.0" y="449.5" width="207" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="477.5" width="207" height="50.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -291,7 +300,6 @@
                             <constraint firstItem="AjU-i1-PyN" firstAttribute="top" secondItem="xjl-dj-2Ae" secondAttribute="top" id="bGW-Jq-81Y"/>
                             <constraint firstItem="AjU-i1-PyN" firstAttribute="trailing" secondItem="xjl-dj-2Ae" secondAttribute="trailing" id="kE0-Ni-epK"/>
                             <constraint firstItem="xjl-dj-2Ae" firstAttribute="bottom" secondItem="VGb-Bx-iQk" secondAttribute="bottom" constant="70" id="nZe-w4-Q3X"/>
-                            <constraint firstItem="AjU-i1-PyN" firstAttribute="bottom" secondItem="xjl-dj-2Ae" secondAttribute="bottom" constant="20" id="njD-ay-uvD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xjl-dj-2Ae"/>
                     </view>

@@ -400,6 +400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
 				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;
@@ -419,6 +420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikeda.SleepCalendar;
 				PRODUCT_NAME = SleepCalendar;
 				SWIFT_VERSION = 5.0;

@@ -45,38 +45,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-
+        
         addBannerViewToView(bannerView)
         
         bannerView.adUnitID = "ca-app-pub-4646130991450896/7572842532"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-        
         firstBoot()
-        
-        //寝るボタンデザイン
-        sleepButton.neumorphicLayer?.depthType = .convex
-        sleepButton.neumorphicLayer?.elementDepth = 10
-        sleepButton.neumorphicLayer?.cornerRadius = 24
-        sleepButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
-        //起きるボタンデザイン
-        gettingUpTimeButton.layer.cornerRadius = 20
-        gettingUpTimeButton.neumorphicLayer?.depthType = .convex
-        gettingUpTimeButton.neumorphicLayer?.elementDepth = 10
-        gettingUpTimeButton.neumorphicLayer?.cornerRadius = 24
-        gettingUpTimeButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
-        //リセットボタンデザイン
-        resetSegueButton.layer.cornerRadius = 20
-        resetSegueButton.neumorphicLayer?.depthType = .convex
-        resetSegueButton.neumorphicLayer?.elementDepth = 10
-        resetSegueButton.neumorphicLayer?.cornerRadius = 24
-        resetSegueButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
-        
         
         // In this case, we instantiate the banner with desired ad size.
     }
     
-    //広告の位置に関する関数
+    //広告・ボタンの位置に関する関数
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
@@ -97,16 +77,29 @@ class ViewController: UIViewController {
                                 constant: 0)
         ])
         
-
+        //寝るボタンデザイン
+        sleepButton.neumorphicLayer?.depthType = .convex
+        sleepButton.neumorphicLayer?.elementDepth = 10
+        sleepButton.neumorphicLayer?.cornerRadius = 24
+        sleepButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
+        //起きるボタンデザイン
+        gettingUpTimeButton.layer.cornerRadius = 20
+        gettingUpTimeButton.neumorphicLayer?.depthType = .convex
+        gettingUpTimeButton.neumorphicLayer?.elementDepth = 10
+        gettingUpTimeButton.neumorphicLayer?.cornerRadius = 24
+        gettingUpTimeButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
+        //リセットボタンデザイン
+        resetSegueButton.layer.cornerRadius = 20
+        resetSegueButton.neumorphicLayer?.depthType = .convex
+        resetSegueButton.neumorphicLayer?.elementDepth = 10
+        resetSegueButton.neumorphicLayer?.cornerRadius = 24
+        resetSegueButton.neumorphicLayer?.elementBackgroundColor = view.backgroundColor?.cgColor as! CGColor
     }
     
-
-
-
     //初回起動エラー回避判定・起きる・寝るボタン有効化判定
     func firstBoot() {
         farstOnOff = UserDefaults.standard.bool(forKey: "onOff")
-         //アプリ起動時にどのボタンを有効化するか判定
+        //アプリ起動時にどのボタンを有効化するか判定
         if farstOnOff == true {
             gettingUpTimeButton.isEnabled = true
             sleepButton.isEnabled = false
@@ -116,7 +109,6 @@ class ViewController: UIViewController {
             farstOnOff = false
         }
     }
-    
     ///現在時間取得関数
     func dateGet(){
         let day = Date()
@@ -126,7 +118,6 @@ class ViewController: UIViewController {
         dateData = String(dateFormatter.string(from: day).suffix(5))
         print(dateData)
     }
-    
     ///Lottieアニメーション設定
     func Lottienimation() {
         animationView.frame = CGRect(x: 0, y: 50, width: view.frame.size.width, height: (view.frame.size.height) / 3)
@@ -178,7 +169,6 @@ class ViewController: UIViewController {
         userDefaults.set(sleepHourDefaults, forKey: "SleepHour")
         userDefaults.set(sleepMintesDefaults, forKey: "SleepMintes")
         userDefaults.synchronize()
-        
     }
     
     ///起きるボタンアニメーション
@@ -197,7 +187,6 @@ class ViewController: UIViewController {
         let ud = UserDefaults.standard
         res = ud.object(forKey: "sleepTime") as! String //の時はエラーになる
         sleepingTime.text = res
-        
     }
     
     ///睡眠時間算出
@@ -229,6 +218,7 @@ class ViewController: UIViewController {
                 totalMintes = gettingUpMintes - sleepMintes
             }
         }
+        
         ///前日に就寝→翌日起床
         if gettingUpDay != sleepDay {
             if gettingUpMintes == sleepMintes {
@@ -255,32 +245,28 @@ class ViewController: UIViewController {
         sleepButton.isEnabled = true
         gettingUpTimeButton.isEnabled = false
         
-        
         if onOffSwitch == 1{
             onOffSwitch = 0
             sender.setTitle("リセット", for: .normal)
-             //アプリ起動時にどのボタンを有効化するか判定
+            //アプリ起動時にどのボタンを有効化するか判定
             if farstOnOff == true {
-                       farstOnOff = false
-                       let onOff = UserDefaults.standard
-                       onOff.set(farstOnOff, forKey: "onOff")
-                       onOff.synchronize()
-                   }else{
-                       
-                   }
+                farstOnOff = false
+                let onOff = UserDefaults.standard
+                onOff.set(farstOnOff, forKey: "onOff")
+                onOff.synchronize()
+            }else{
+            }
             
             ///画面遷移
             performSegue(withIdentifier: "toNextViewController", sender: nil)
-           
         }else{
             onOffSwitch = 0
             sleepingTime.text = "00:00"
             gettingUpTime.text = "00:00"
             totalTime.text = "0時間0分"
-     
         }
     }
-    
+    //データを渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextViewController"{
             let nextVC = segue.destination as? CalendarViewController
@@ -294,5 +280,5 @@ class ViewController: UIViewController {
         }
     }
     
+    
 }
-
