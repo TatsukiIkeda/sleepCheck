@@ -7,3 +7,7 @@
 自分の睡眠時間を把握して、良質な睡眠ができるよう睡眠習慣を管理しましょう。
 
 ![QR_sleepCheck](https://user-images.githubusercontent.com/66693508/122871489-10654b00-d36a-11eb-9501-36808b793492.png)
+
+AppStoreURLはこちら↓
+
+https://apps.apple.com/us/app/id1522555520
